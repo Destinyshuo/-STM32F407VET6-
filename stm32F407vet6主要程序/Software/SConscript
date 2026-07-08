@@ -1,0 +1,34 @@
+from building import *
+
+cwd = GetCurrentDir()
+
+src = Split('''
+fifo.c
+oled.c
+Emm_V5.c
+Usart2DMA_IMU.c
+VL53_DMA.c
+usart4.c
+usart5.c
+usart6.c
+Mypid.c
+TB6612.c
+PWM.c
+MotorEncoder.c
+CarTurn.c
+SportMode.c
+water.c
+ADC1.c
+Soil.c
+MQ2.c
+MQ135.c
+buzzer.c
+DH11.c
+rt_schedule.c
+''')
+
+CPPPATH = [cwd, Dir('#').abspath + '/Hardware', Dir('#').abspath + '/drivers']
+
+group = DefineGroup('Software', src, depend = [''], CPPPATH = CPPPATH, LIBS = ['m'])
+
+Return('group')

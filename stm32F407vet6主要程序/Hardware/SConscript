@@ -1,0 +1,19 @@
+from building import *
+
+cwd = GetCurrentDir()
+
+src = Split('''
+oled_i2c.c
+usart1_port.c
+usart2_port.c
+usart3_port.c
+usart6_port.c
+uart4_port.c
+uart5_port.c
+''')
+
+CPPPATH = [cwd, Dir('#').abspath + '/Software', Dir('#').abspath + '/drivers']
+
+group = DefineGroup('Hardware', src, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')
